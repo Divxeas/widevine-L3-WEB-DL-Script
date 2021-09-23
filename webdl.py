@@ -51,8 +51,8 @@ if args.id:
     subprocess.run([youtubedlexe, '-k', '--allow-unplayable-formats', '--no-check-certificate', '-F', json_mpd_url])
 
     vid_id = input("\nEnter Video ID : ")
-    audio_id = input("Enter Audio ID : ")
-    audio2_id = input("Enter Audio ID : ")
+    audio_id = input("Enter Spanish Audio ID : ")
+    audio2_id = input("Enter English Audio ID : ")
     subprocess.run([youtubedlexe, '-k', '--allow-unplayable-formats', '--no-check-certificate', '-f', audio_id, '--fixup', 'never', json_mpd_url, '-o', 'encrypted.m4a', '--external-downloader', aria2cexe, '--external-downloader-args', '-x 16 -s 16 -k 1M'])
     subprocess.run([youtubedlexe, '-k', '--allow-unplayable-formats', '--no-check-certificate', '-f', audio2_id, '--fixup', 'never', json_mpd_url, '-o', 'encrypted2.m4a', '--external-downloader', aria2cexe, '--external-downloader-args', '-x 16 -s 16 -k 1M'])
     subprocess.run([youtubedlexe, '-k', '--allow-unplayable-formats', '--no-check-certificate', '-f', vid_id, '--fixup', 'never', json_mpd_url, '-o', 'encrypted.mp4', '--external-downloader', aria2cexe, '--external-downloader-args', '-x 16 -s 16 -k 1M'])   
@@ -74,11 +74,11 @@ if args.subtitle:
     os.system('ren *.xml en.xml')
     subprocess.run(f'{SubtitleEditexe} /convert en.xml srt', shell=True) 
     print("Merging .....")
-    subprocess.run([mkvmergeexe, '--ui-language' ,'en', '--output', output +'.mkv', '--language', '0:eng', '--default-track', '0:yes', '--compression', '0:none', 'decrypted.mp4', '--language', '0:eng', '--default-track', '0:yes', '--compression' ,'0:none', 'decrypted.m4a', '--language', '0:ara', '--default-track', '0:no', '--compression' ,'0:none', 'decrypted2.m4a', '--language', '0:eng','--track-order', '0:0,1:0,2:0,3:0,4:0', 'en.srt'])
+    subprocess.run([mkvmergeexe, '--ui-language' ,'en', '--output', output +'.mkv', '--language', '0:eng', '--default-track', '0:yes', '--compression', '0:none', 'decrypted.mp4', '--language', '0:spa', '--default-track', '0:yes', '--compression' ,'0:none', 'decrypted.m4a', '--language', '0:eng', '--default-track', '0:no', '--compression' ,'0:none', 'decrypted2.m4a', '--language', '0:eng','--track-order', '0:0,1:0,2:0,3:0,4:0', 'en.srt'])
     print("\nAll Done .....")
 else:
     print("Merging .....")
-    subprocess.run([mkvmergeexe, '--ui-language' ,'en', '--output', output +'.mkv', '--language', '0:eng', '--default-track', '0:yes', '--compression', '0:none', 'decrypted.mp4', '--language', '0:eng', '--default-track', '0:yes', '--compression' ,'0:none', 'decrypted.m4a', '--language', '0:ara', '--default-track', '0:no', '--compression' ,'0:none', 'decrypted2.m4a', '--language', '0:eng','--track-order', '0:0,1:0,2:0,3:0,4:0'])
+    subprocess.run([mkvmergeexe, '--ui-language' ,'en', '--output', output +'.mkv', '--language', '0:eng', '--default-track', '0:yes', '--compression', '0:none', 'decrypted.mp4', '--language', '0:spa', '--default-track', '0:yes', '--compression' ,'0:none', 'decrypted.m4a', '--language', '0:eng', '--default-track', '0:no', '--compression' ,'0:none', 'decrypted2.m4a', '--language', '0:eng','--track-order', '0:0,1:0,2:0,3:0,4:0'])
     print("\nAll Done .....")    
 
 print("\nDo you want to delete the Encrypted Files : Press 1 for yes , 2 for no")
