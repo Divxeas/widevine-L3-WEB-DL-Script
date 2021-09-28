@@ -59,7 +59,7 @@ if args.id:
 
 else:
     print(f'Selected MPD : {json_mpd_url}\n')
-    subprocess.run([XstreamDLexe, json_mpd_url, '--select', '-name', 'encrypted', '-save-dir', dirPath, '--enable-auto-delete', '--limit-per-host', '100', "--mp4decrypt", "binaries"])
+    subprocess.run([XstreamDLexe, json_mpd_url, '--select', '-name', 'encrypted', '-save-dir', dirPath, '--enable-auto-delete', '--limit-per-host', '100', '--mp4decrypt', 'binaries', '--ffmpeg', 'binaries'])
 
 
 
